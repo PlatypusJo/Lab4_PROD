@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadraticOptimizationSolver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadraticOptimizationLibTests", "..\QuadraticOptimizationLibTests\QuadraticOptimizationLibTests.csproj", "{B1ACB468-074B-4B76-A5C4-DE6BEB4B0221}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutputFlows", "..\OutputFlows\OutputFlows.csproj", "{53C4003E-D8A9-4DCA-8771-EEC8CD97F5B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1ACB468-074B-4B76-A5C4-DE6BEB4B0221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1ACB468-074B-4B76-A5C4-DE6BEB4B0221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1ACB468-074B-4B76-A5C4-DE6BEB4B0221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C4003E-D8A9-4DCA-8771-EEC8CD97F5B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C4003E-D8A9-4DCA-8771-EEC8CD97F5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C4003E-D8A9-4DCA-8771-EEC8CD97F5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C4003E-D8A9-4DCA-8771-EEC8CD97F5B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
