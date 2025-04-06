@@ -10,7 +10,7 @@ namespace QuadraticOptimizationLibTests
     {
         #region Поля
 
-        const double accuracy = 0.0001;
+        const double accuracy = 0.1E-14;
 
         #endregion
         
@@ -66,6 +66,23 @@ namespace QuadraticOptimizationLibTests
             Assert.Equal(actualDifference, expectedDifference);
         }
 
+        [Fact]
+        public void SolveV1WithConditions_PassCorrectParameters_GetExpectedResult()
+        {
+            // Arrange
+            IQuadraticOptimizationSolver<BalanceDataModel> solver = new BalanceSolver();
+            BalanceDataModel dataEntity = GetDataModelV1WithConditions();
+
+            // Act
+            double[] result = solver.Solve(dataEntity);
+            var A = Matrix<double>.Build.SparseOfArray(dataEntity.MatrixA);
+            var x = Vector<double>.Build.SparseOfArray(result);
+            double[] actual = A.Multiply(x).ToArray();
+
+            // Assert
+            Assert.All(actual, item => Assert.True(item <= accuracy));
+        }
+
         #endregion
 
         #region Внутренние методы
@@ -114,7 +131,7 @@ namespace QuadraticOptimizationLibTests
                     { 1, -1, -1, 0, 0, 0, 0, -1 },
                     { 0, 0, 1, -1, -1, 0, 0, 0 },
                     { 0, 0, 0, 0, 1, -1, -1, 0 },
-                    { -1, 10, 0, 0, 0, 0, 0, 0 },
+                    { 1, -10, 0, 0, 0, 0, 0, 0 },
                 },
                 VectorY = new double[] { 0, 0, 0, 0 },
                 Tolerance = new double[] { 0.200, 0.121, 0.683, 0.040, 0.102, 0.081, 0.020, 0.667 },
