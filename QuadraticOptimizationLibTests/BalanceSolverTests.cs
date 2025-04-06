@@ -1,3 +1,4 @@
+using Accord.Math;
 using Accord.Math.Optimization.Losses;
 using MathNet.Numerics.LinearAlgebra;
 using QuadraticOptimizationSolver.DataModels;
@@ -22,12 +23,11 @@ namespace QuadraticOptimizationLibTests
             // Arrange
             IQuadraticOptimizationSolver<BalanceDataModel> solver = new BalanceSolver();
             BalanceDataModel dataEntity = GetDataModelOriginal();
+            double[,] A = dataEntity.MatrixA;
 
             // Act
             double[] result = solver.Solve(dataEntity);
-            var A = Matrix<double>.Build.SparseOfArray(dataEntity.MatrixA);
-            var x = Vector<double>.Build.SparseOfArray(result);
-            double[] actual = A.Multiply(x).ToArray();
+            double[] actual = A.Dot(result);
 
             // Assert
             Assert.All(actual, item => Assert.True(item <= accuracy));
@@ -39,12 +39,11 @@ namespace QuadraticOptimizationLibTests
             // Arrange
             IQuadraticOptimizationSolver<BalanceDataModel> solver = new BalanceSolver();
             BalanceDataModel dataEntity = GetDataModelV1();
+            double[,] A = dataEntity.MatrixA;
 
             // Act
             double[] result = solver.Solve(dataEntity);
-            var A = Matrix<double>.Build.SparseOfArray(dataEntity.MatrixA);
-            var x = Vector<double>.Build.SparseOfArray(result);
-            double[] actual = A.Multiply(x).ToArray();
+            double[] actual = A.Dot(result);
 
             // Assert
             Assert.All(actual, item => Assert.True(item <= accuracy));
@@ -72,12 +71,11 @@ namespace QuadraticOptimizationLibTests
             // Arrange
             IQuadraticOptimizationSolver<BalanceDataModel> solver = new BalanceSolver();
             BalanceDataModel dataEntity = GetDataModelV1WithConditions();
+            double[,] A = dataEntity.MatrixA;
 
             // Act
             double[] result = solver.Solve(dataEntity);
-            var A = Matrix<double>.Build.SparseOfArray(dataEntity.MatrixA);
-            var x = Vector<double>.Build.SparseOfArray(result);
-            double[] actual = A.Multiply(x).ToArray();
+            double[] actual = A.Dot(result);
 
             // Assert
             Assert.All(actual, item => Assert.True(item <= accuracy));
