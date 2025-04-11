@@ -62,7 +62,7 @@ namespace QuadraticOptimizationLibTests
             int actualDifference = (int)(Math.Round(result[0] / result[1], MidpointRounding.AwayFromZero));
 
             // Assert:
-            Assert.Equal(actualDifference, expectedDifference);
+            Assert.Equal(expectedDifference, actualDifference);
         }
 
         [Fact]
